@@ -1,0 +1,23 @@
+{
+    "name": "m00t/phpspec-phpunit-matchers",
+    "type": "library",
+    "description": "Changes IdentityMatcher from '===' to PHPUnit's assertEquals()",
+    "keywords": ["phpspec"],
+    "homepage": "https://github.com/m00t/phpspec-phpunit-matchers",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anton Serdyuk",
+            "email": "anton.serdyuk@gmail.com",
+            "role": "developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.6",
+        "phpspec/phpspec": "~2.0",
+        "phpunit/phpunit": "~4.1"
+    },
+    "autoload": {
+        "psr-0": { "M00t\\PhpSpec\\PHPUnitMatchers": "src/" }
+    }
+}
