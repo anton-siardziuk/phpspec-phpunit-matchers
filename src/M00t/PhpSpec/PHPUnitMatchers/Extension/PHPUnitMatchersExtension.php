@@ -6,20 +6,20 @@ namespace M00t\PhpSpec\PHPUnitMatchers\Extension;
 
 use M00t\PhpSpec\PHPUnitMatchers\Formatter\Presenter\Differ\Differ;
 use M00t\PhpSpec\PHPUnitMatchers\Runner\Maintainer\PHPUnitMatchersMaintainer;
-use PhpSpec\Extension\ExtensionInterface;
+use PhpSpec\Extension;
 use PhpSpec\ServiceContainer;
 
-class PHPUnitMatchersExtension implements ExtensionInterface
+class PHPUnitMatchersExtension implements Extension
 {
-    public function load(ServiceContainer $container)
+    public function load(ServiceContainer $container, array $params)
     {
-        $container->setShared('runner.maintainers.phpunit_matchers', function($c) {
+        $container->define('runner.maintainers.phpunit_matchers', function(ServiceContainer $c) {
             return new PHPUnitMatchersMaintainer(
                 $c->get('formatter.presenter')
             );
         });
 
-        $container->setShared('formatter.presenter.differ', function($c) {
+        $container->define('formatter.presenter.differ', function($c) {
             return new Differ();
         });
     }

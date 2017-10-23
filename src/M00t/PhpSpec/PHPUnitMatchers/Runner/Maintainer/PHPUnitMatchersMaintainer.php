@@ -5,24 +5,19 @@ namespace M00t\PhpSpec\PHPUnitMatchers\Runner\Maintainer;
 
 
 use M00t\PhpSpec\PHPUnitMatchers\Matcher\IdentityMatcher;
-use PhpSpec\Formatter\Presenter\PresenterInterface;
+use PhpSpec\Formatter\Presenter\Presenter;
 use PhpSpec\Loader\Node\ExampleNode;
 use PhpSpec\Runner\CollaboratorManager;
-use PhpSpec\Runner\Maintainer\MaintainerInterface;
+use PhpSpec\Runner\Maintainer\Maintainer;
 use PhpSpec\Runner\MatcherManager;
-use PhpSpec\SpecificationInterface;
+use PhpSpec\Specification;
 
-class PHPUnitMatchersMaintainer implements MaintainerInterface
+class PHPUnitMatchersMaintainer implements Maintainer
 {
-    /**
-     * @var \PhpSpec\Formatter\Presenter\PresenterInterface
-     */
+
     private $presenter;
 
-    /**
-     * @param PresenterInterface $presenter
-     */
-    public function __construct(PresenterInterface $presenter)
+    public function __construct(Presenter $presenter)
     {
         $this->presenter = $presenter;
     }
@@ -39,25 +34,31 @@ class PHPUnitMatchersMaintainer implements MaintainerInterface
 
     /**
      * @param ExampleNode $example
-     * @param SpecificationInterface $context
+     * @param Specification $context
      * @param MatcherManager $matchers
      * @param CollaboratorManager $collaborators
      */
-    public function prepare(ExampleNode $example, SpecificationInterface $context,
-                            MatcherManager $matchers, CollaboratorManager $collaborators)
-    {
+    public function prepare(
+        ExampleNode $example,
+        Specification $context,
+        MatcherManager $matchers,
+        CollaboratorManager $collaborators
+    ) {
         $matchers->add(new IdentityMatcher($this->presenter));
     }
 
     /**
      * @param ExampleNode $example
-     * @param SpecificationInterface $context
+     * @param Specification $context
      * @param MatcherManager $matchers
      * @param CollaboratorManager $collaborators
      */
-    public function teardown(ExampleNode $example, SpecificationInterface $context,
-                             MatcherManager $matchers, CollaboratorManager $collaborators)
-    {
+    public function teardown(
+        ExampleNode $example,
+        Specification $context,
+        MatcherManager $matchers,
+        CollaboratorManager $collaborators
+    ) {
 
     }
 
