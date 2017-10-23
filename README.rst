@@ -134,4 +134,4 @@ Installation
 
     # phpspec.yml
     extensions:
-        - M00t\PhpSpec\PHPUnitMatchers\Extension\PHPUnitMatchersExtension
+        M00t\PhpSpec\PHPUnitMatchers\Extension\PHPUnitMatchersExtension: ~
